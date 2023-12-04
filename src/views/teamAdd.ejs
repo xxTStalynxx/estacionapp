@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equipo de trabajo</title>
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Fuentes de Google -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link rel="stylesheet" href="/lib/owlcarousel/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <!-- Topbar Start -->
+    <div class="container-fluid bg-light pt-3 d-none d-lg-block">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7 text-center text-lg-left mb-2 mb-lg-0">
+                    <div class="d-inline-flex align-items-center">
+                        <p><i class="fa fa-envelope mr-2"></i>estaciones.espoch@espoch.edu.ec</p>
+                        <p class="text-body px-3">|</p>
+                        <p><i class="fa fa-phone-alt mr-2"></i>593(03) 2998-200 ext 2221</p>
+                    </div>
+                </div>
+                <div class="col-lg-5 text-center text-lg-right">
+                    <div class="d-inline-flex align-items-center">
+                        <a class="text-info px-3" href="">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a class="text-info px-3" href="">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a class="text-info px-3" href="">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Topbar End -->
+
+
+    <!-- Navbar Start -->
+    <div class="container-fluid position-relative nav-bar p-0">
+        <div class="container-lg position-relative p-0 px-lg-3" style="z-index: 9;">
+            <nav class="navbar navbar-expand-lg bg-light navbar-light shadow-lg py-3 py-lg-0 pl-3 pl-lg-4">
+                <img src="/img/logo-espoch.png" alt="">
+                <a href="/inicio" class="navbar-brand">
+                    <h2 class="m-0 text-info"><span class="text-dark">Estaciones</span></h2>
+                    <h2 class="m-0 text-info">Meteorológicas</h2>
+                </a>
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
+                    <div class="navbar-nav ml-auto py-0">
+                        <a href="/inicio" class="nav-item nav-link">Inicio</a>
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle active" data-toggle="dropdown">Información</a>
+                            <div class="dropdown-menu border-0 rounded-0 m-0">
+                                <a href="/estaciones" class="dropdown-item">Estaciones</a>
+                                <a href="/sensores" class="dropdown-item">Sensores</a>
+                                <a href="/mantenimiento" class="dropdown-item">Mantenimiento</a>
+                                <a href="/equipo" class="dropdown-item">Equipo de trabajo</a>
+                            </div>
+                        </div>
+                        <a href="" class="nav-item nav-link">Datos</a>
+                        <a href="/mapas" class="nav-item nav-link">Mapas</a>
+                        <a href="/noticias/1" class="nav-item nav-link">Noticias</a>
+                        <a href="/contacto" class="nav-item nav-link">Contacto</a>
+
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><i
+                                    class="fa fa-user"></i></a>
+                            <div class="dropdown-menu border-0 rounded-0 m-0">
+                                <div class="d-flex">
+                                    <div class="flex-shrink-0 me-3">
+                                        <div class="px-1">
+                                            <img src="/img/avatar.png" alt
+                                                class="w-px-40 h-auto rounded-circle" />
+                                        </div>
+                                    </div>
+                                    <div class="px-lg-2 ml-n1">
+                                        <span class="fw-semibold d-block text-info text-truncate"><%= admin.nombre %></span>
+                                        <small class="text-muted">Admin</small>
+                                    </div>
+                                </div>
+                                <div class="dropdown-divider"></div>
+                                <a href="" class="dropdown-item"><i class="fa fa-user mr-2"></i>Mi perfil</a>
+                                <a href="" class="dropdown-item"><i class="fa fa-users mr-2"></i>Administradores</a>
+                                <div class="dropdown-divider"></div>
+                                <a href="/signoff" class="dropdown-item"><i class="fa fa-power-off mr-2"></i>Cerrar sesión</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <!-- Navbar End -->
+
+    <!-- Header Start -->
+    <div class="container-fluid page-header">
+        <div class="container">
+            <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 600px">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="app-brand justify-content-center">
+                            <a class="navbar-brand">
+                                <h3 class="m-0 text-info mb-2"><span class="text-dark">Nuevo</span> Miembro</h3>
+                            </a>
+                        </div>
+        
+                        <p class="mb-4">Llene los datos para añadir un nuevo miembro</p>
+        
+                        <form id="formAuthentication" class="mb-3" action="/equipo/save" method="POST" enctype="multipart/form-data">
+                            <div class="mb-3">
+                                <input type="text" class="form-control" name="nombre"
+                                    placeholder="Nombre del miembro" autofocus required/>
+                            </div>
+                            <div class="mb-3">
+                                <input type="text" class="form-control" name="cargo"
+                                    placeholder="Cargo" required/>
+                            </div>
+                            <div class="mb-3">
+                                <input type="email" class="form-control" name="correo"
+                                    placeholder="Correo electrónico" required/>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label text-muted mx-2">Fotografía</label>
+                                <input type="file" class="form-control" name="image" required/>
+                            </div>
+                            <div class="mb-3 text-center">
+                                <button class="btn btn-info d-grid w-auto mx-2" type="submit"><i class="fa fa-save mr-2"></i>Guardar</button>
+                                <a class="btn btn-danger d-grid w-auto mx-2" href="/equipo"><i class="fa fa-ban mr-2"></i>Cancelar</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Header End -->
+
+    <!-- Footer Start -->
+    <div class="container-fluid bg-dark text-white border-top py-4 px-sm-3 px-md-5"
+        style="border-color: rgba(256, 256, 256, .1) !important;">
+        <div class="row">
+            <div class="col-lg-6 text-center text-md-left mb-3 mb-md-0">
+                <p class="m-0 text-white-50">Copyright &copy; 2023
+                </p>
+            </div>
+            <div class="col-lg-6 text-center text-md-right">
+                <p class="m-0 text-white-50">Designed by <a href="https://htmlcodex.com">HTML Codex</a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-info btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+
+    <!-- Librerias JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="/lib/easing/easing.min.js"></script>
+    <script src="/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="/lib/tempusdominus/js/moment.min.js"></script>
+    <script src="/lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <!-- Contact Javascript File -->
+    <script src="mail/jqBootstrapValidation.min.js"></script>
+    <script src="mail/contact.js"></script>
+
+    <!-- Javascript Principal -->
+    <script src="/js/main.js"></script>
+</body>
+
+</html>
