@@ -3930,6 +3930,10 @@ input[type="button"].btn-block {
   padding: 0.5rem 1rem;
 }
 
+a.nav-item.nav-link {
+  cursor: pointer; /* Cambia el cursor a una mano al pasar sobre el enlace */
+}
+
 .nav-link:hover, .nav-link:focus {
   text-decoration: none;
 }

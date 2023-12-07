@@ -68,3 +68,11 @@
     
 })(jQuery);
 
+function ShowInfo() {
+    Swal.fire({
+        icon: "info",
+        title: "Aviso Importante",
+        text: "Estamos trabajando en este apartado. ¡Manténgase informado!",
+        confirmButtonText: "Aceptar",
+    });
+}

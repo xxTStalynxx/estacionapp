@@ -79,7 +79,7 @@
                                 <a href="/equipo" class="dropdown-item">Equipo de trabajo</a>
                             </div>
                         </div>
-                        <a href="" class="nav-item nav-link">Datos</a>
+                        <a onclick="ShowInfo()" class="nav-item nav-link">Datos</a>
                         <a href="/mapas" class="nav-item nav-link">Mapas</a>
                         <a href="/noticias/1" class="nav-item nav-link">Noticias</a>
                         <a href="/contacto" class="nav-item nav-link active">Contacto</a>
@@ -146,27 +146,34 @@
                                     <div class="col-lg-6 col-md-6">
                                         <h6 class="text-muted text-uppercase mb-4" style="letter-spacing: 4px;">
                                             Contáctenos</h6>
-                                        <p title="Dirección"><i class="fa fa-map-marker-alt mr-2 text-info"></i>Panamericana Sur km 1 1/2, Riobamba-Ecuador</p>
-                                        <p title="Correo"><i class="fa fa-envelope mr-2 text-info"></i>estaciones.espoch@espoch.edu.ec</p>
-                                        <p title="Teléfono"><i class="fa fa-phone-alt mr-2 text-info"></i>593(03) 2998-200 ext 2221</p>
-                                        <p title="Código postal"><i class="fa fa-thumbtack mr-2 text-info"></i>EC060155</p>
+                                        <p title="Dirección"><i
+                                                class="fa fa-map-marker-alt mr-2 text-info"></i>Panamericana Sur km 1
+                                            1/2, Riobamba-Ecuador</p>
+                                        <p title="Correo"><i
+                                                class="fa fa-envelope mr-2 text-info"></i>estaciones.espoch@espoch.edu.ec
+                                        </p>
+                                        <p title="Teléfono"><i class="fa fa-phone-alt mr-2 text-info"></i>593(03)
+                                            2998-200 ext 2221</p>
+                                        <p title="Código postal"><i class="fa fa-thumbtack mr-2 text-info"></i>EC060155
+                                        </p>
                                         <p title="Página web"><i class="fa fa-desktop mr-2 text-info"></i>Pagina web</p>
                                     </div>
                                     <div class="col-lg-6 col-md-6">
                                         <h6 class="text-muted text-uppercase mb-4" style="letter-spacing: 4px;">
                                             Formulario de contacto</h6>
-                                        <form id="formAuthentication" class="mb-3" action="/contacto#contacto" method="POST">
+                                        <form id="formAuthentication" class="mb-3" action="/contacto#contacto"
+                                            method="POST">
                                             <div class="mb-3">
                                                 <input type="text" class="form-control" name="nombre"
-                                                    placeholder="Nombre" required/>
+                                                    placeholder="Nombre" required />
                                             </div>
                                             <div class="mb-3">
                                                 <input type="email" class="form-control" name="correo"
-                                                    placeholder="Correo electrónico" required/>
+                                                    placeholder="Correo electrónico" required />
                                             </div>
                                             <div class="mb-3">
                                                 <input type="text" class="form-control" name="asunto"
-                                                    placeholder="Asunto" required/>
+                                                    placeholder="Asunto" required />
                                             </div>
                                             <div class="control-group">
                                                 <textarea class="form-control py-3 px-4" rows="4" placeholder="Mensaje"
@@ -179,11 +186,15 @@
                                                     <i class="fa fa-paper-plane mr-2"></i>Enviar</button>
                                             </div>
                                         </form>
-                                        <% if (ok == 1) {%>
-                                            <p style="color:#1dbb25"><i class="fa fa-check mr-2"></i><%= message %></p>
-                                        <% } else if(ok == 0) {%>
-                                            <p style="color:#ff5c5c"><i class="fa fa-ban mr-2"></i><%= message %></p>
-                                        <% } %>
+                                        <% if (ok==1) {%>
+                                            <p style="color:#1dbb25"><i class="fa fa-check mr-2"></i>
+                                                <%= message %>
+                                            </p>
+                                            <% } else if(ok==0) {%>
+                                                <p style="color:#ff5c5c"><i class="fa fa-ban mr-2"></i>
+                                                    <%= message %>
+                                                </p>
+                                                <% } %>
                                     </div>
                                 </div>
                             </div>
@@ -222,8 +233,7 @@
                     <a class="text-white-50 mb-2" href="/mantenimiento"><i
                             class="fa fa-angle-right mr-2"></i>Mantenimiento</a>
                     <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Datos</a>
-                    <a class="text-white-50 mb-2" href="/mapas"><i
-                        class="fa fa-angle-right mr-2"></i>Mapas</a>
+                    <a class="text-white-50 mb-2" href="/mapas"><i class="fa fa-angle-right mr-2"></i>Mapas</a>
                 </div>
             </div>
             <div class="col-lg-4 col-md-6 mb-3">
@@ -266,10 +276,6 @@
     <script src="/lib/tempusdominus/js/moment.min.js"></script>
     <script src="/lib/tempusdominus/js/moment-timezone.min.js"></script>
     <script src="/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
-
-    <!-- Contact Javascript File -->
-    <script src="mail/jqBootstrapValidation.min.js"></script>
-    <script src="mail/contact.js"></script>
 
     <!-- Javascript Principal -->
     <script src="/js/main.js"></script>

@@ -18,7 +18,7 @@ controller.sendEmail = async (req, res) => {
     let admin = [];
     const mailOptions = {
         from: `<${nombre}> <${correo}>`,
-        to: "estalinmorocho18@gmail.com",
+        to: "estaciones.espoch@espoch.edu.ec",
         subject: asunto,
         text: mensaje
     };

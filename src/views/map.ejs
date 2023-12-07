@@ -79,7 +79,7 @@
                                 <a href="/equipo" class="dropdown-item">Equipo de trabajo</a>
                             </div>
                         </div>
-                        <a href="" class="nav-item nav-link">Datos</a>
+                        <a onclick="ShowInfo()" class="nav-item nav-link">Datos</a>
                         <a href="/mapas" class="nav-item nav-link active">Mapas</a>
                         <a href="/noticias/1" class="nav-item nav-link">Noticias</a>
                         <a href="/contacto" class="nav-item nav-link">Contacto</a>
@@ -211,6 +211,7 @@
             </div>
             <div id="map" class="card mx-auto shadow" style="width: 80%;">
                 <img src="<%= map.imagen %>" alt="">
+                <p class="px-4 mx-4"><%= map.descripcion %></p>
             </div>
         </div>
     </div>
