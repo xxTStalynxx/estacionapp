@@ -102,8 +102,9 @@
                                         </div>
                                     </div>
                                     <div class="dropdown-divider"></div>
-                                    <a href="" class="dropdown-item"><i class="fa fa-user mr-2"></i>Mi perfil</a>
-                                    <a href="" class="dropdown-item"><i class="fa fa-users mr-2"></i>Administradores</a>
+                                    <a href="/perfil" class="dropdown-item"><i class="fa fa-user mr-2"></i>Mi perfil</a>
+                                    <a href="/admins" class="dropdown-item"><i
+                                            class="fa fa-users mr-2"></i>Administradores</a>
                                     <div class="dropdown-divider"></div>
                                     <a href="/signoff" class="dropdown-item"><i class="fa fa-power-off mr-2"></i>Cerrar
                                         sesión</a>
@@ -196,6 +197,7 @@
                                                 </p>
                                                 <% } %>
                                     </div>
+                                    <!--<input type="file" id="file-input" />-->
                                 </div>
                             </div>
                         </div>
@@ -280,6 +282,39 @@
     <!-- Javascript Principal -->
     <script src="/js/main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.all.min.js"></script>
+    <script>
+        //Primera aproximacion a la funcion para leer archivos .rep
+        function leerArchivo(e) {
+            let archivo = e.target.files[0];
+            if (!archivo) {
+                return;
+            }
+            let lector = new FileReader();
+            let bugs = [];
+            lector.onload = function (e) {
+                let contenido = e.target.result;
+
+                let datos = contenido.split(';');
+                let newdato = datos[0].slice(1);
+                datos[0] = newdato;
+                newdato = datos[datos.length - 1].slice(0, -1);
+                datos[datos.length -1] = newdato;
+                let dato;
+                let data = [];
+                //let data = { variable, valor };
+                for (let i = 0; i < datos.length; i++) {
+                    //datos[i] = datos[i].replace("/", "0");
+                    let aux = datos[i].split(':');
+                    dato = { variable: aux[0], valor: aux[1]};
+                    data.push(dato);
+                }
+                console.log(data);
+            };
+            lector.readAsText(archivo);
+        }
+
+        document.getElementById('file-input').addEventListener('change', leerArchivo, false);
+    </script>
 </body>
 
 </html>

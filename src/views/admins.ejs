@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Noticias</title>
+    <title>Admins</title>
 
     <!-- Favicon -->
     <link href="img/favicon.ico" rel="icon">
@@ -81,11 +81,11 @@
                         </div>
                         <a onclick="ShowInfo()" class="nav-item nav-link">Datos</a>
                         <a href="/mapas" class="nav-item nav-link">Mapas</a>
-                        <a href="/noticias/1" class="nav-item nav-link active">Noticias</a>
+                        <a href="/noticias/1" class="nav-item nav-link">Noticias</a>
                         <a href="/contacto" class="nav-item nav-link">Contacto</a>
 
                         <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><i
+                            <a href="#" class="nav-link dropdown-toggle active" data-toggle="dropdown"><i
                                     class="fa fa-user"></i></a>
                             <div class="dropdown-menu border-0 rounded-0 m-0">
                                 <div class="d-flex">
@@ -103,7 +103,8 @@
                                 </div>
                                 <div class="dropdown-divider"></div>
                                 <a href="/perfil" class="dropdown-item"><i class="fa fa-user mr-2"></i>Mi perfil</a>
-                                <a href="/admins" class="dropdown-item"><i class="fa fa-users mr-2"></i>Administradores</a>
+                                <a href="/admins" class="dropdown-item"><i
+                                        class="fa fa-users mr-2"></i>Administradores</a>
                                 <div class="dropdown-divider"></div>
                                 <a href="/signoff" class="dropdown-item"><i class="fa fa-power-off mr-2"></i>Cerrar
                                     sesión</a>
@@ -119,53 +120,111 @@
     <!-- Header Start -->
     <div class="container-fluid page-header">
         <div class="container">
-            <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 600px">
-                <div class="container-fluid pt-5 py-3">
-                    <div class="container m-2">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="app-brand justify-content-center">
-                                    <a class="navbar-brand">
-                                        <h3 class="m-0 text-info mb-2"><span class="text-dark">Nueva</span> Noticia</h3>
-                                    </a>
-                                </div>
-                                <form id="formAuthentication" class="mb-3" action="/noticias/save" method="POST"
-                                    enctype="multipart/form-data">
-                                    <div class="mb-3">
-                                        <input type="text" class="form-control" name="titulo"
-                                            placeholder="Título de la noticia" autofocus required/>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label class="form-label text-muted mx-2">Imágen de presentación</label>
-                                        <input type="file" class="form-control" name="image" required />
-                                    </div>
-                                    <label class="form-label text-muted mx-2">Redacte la noticia</label>
-                                    <div class="mb-3">
-                                        <div id="editor" style="min-height: 200px; font-size: 1rem;">
-                                            
-                                        </div>
-                                    </div>
-                                    <div class="mb-3">
-                                        <input id="contenido" type="hidden" class="form-control" name="contenido"
-                                            placeholder="Contenido de la noticia"/>
-                                    </div>
-                                    <div class="mb-3 text-center">
-                                        <button class="btn btn-info d-grid w-auto mx-2" type="submit"><i
-                                                class="fa fa-save mr-2"></i>Guardar</button>
-                                        <a class="btn btn-danger d-grid w-auto mx-2" href="/noticias/1"><i
-                                                class="fa fa-ban mr-2"></i>Cancelar</a>
-                                    </div>
-                                </form>
-                                <% if (error) {%>
-                                    <p style="color:#ff5c5c"><%= error %></p>
-                                <% } %>
+            <div class="align-items-center justify-content-center" style="min-height: 500px">
+                <div class="row pt-5">
+                    <div class="col-lg-4">
+                        <div class="card mb-2 p-3">
+                            <div class="app-brand justify-content-center">
+                                <a class="navbar-brand">
+                                    <h4 class="m-0 text-info mb-2"><span class="text-dark">Nuevo</span> administrador</h4>
+                                </a>
                             </div>
+
+                            <form id="formAuthentication" class="mb-3" action="/admins/add" method="POST">
+                                <p class="mb-3 pt-1">Llene los datos</p>
+                                <div class="mb-3">
+                                    <input type="text" class="form-control" name="nombre"
+                                        placeholder="Nombre de usuario" autofocus required />
+                                </div>
+                                <div class="mb-3 form-password-toggle">
+                                    <div class="input-group input-group-merge">
+                                        <input type="password" class="form-control" name="contrasena"
+                                            placeholder="Contraseña" aria-describedby="password" required />
+                                    </div>
+                                </div>
+                                <div class="mb-3 form-password-toggle">
+                                    <div class="input-group input-group-merge">
+                                        <input type="password" class="form-control" name="confirma_contrasena"
+                                            placeholder="Confirmar la contraseña" aria-describedby="password"
+                                            required />
+                                    </div>
+                                </div>
+                                <div class="mb-2">
+                                    <button class="btn btn-info d-grid w-100" type="submit"><i
+                                            class="fa fa-save mr-2"></i>Guardar</button>
+                                </div>
+                            </form>
+                            <% if (error) {%>
+                                <p style="color:#ff5c5c">
+                                    <%= error %>
+                                </p>
+                                <% } %>
+                        </div>
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="card">
+                            <div class="app-brand justify-content-center p-3">
+                                <a class="navbar-brand">
+                                    <h4 class="m-0 text-info mb-2"><span class="text-dark">Lista de</span> administradores</h4>
+                                </a>
+                            </div>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Nro</th>
+                                        <th>Nombre</th>
+                                        <th>Rol</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% if (admins) {%>
+                                        <% for (var i=0; i < admins.length; i++) { %>
+                                            <tr>
+                                                <td>
+                                                    <%= i+1 %>
+                                                </td>
+                                                <td>
+                                                    <strong>
+                                                        <%= admins[i].nombre %>
+                                                    </strong>
+                                                </td>
+                                                <td>
+                                                    Administrador
+                                                </td>
+                                                <% if (admins[i].id_admin !=1) {%>
+                                                    <% if (admin.id_admin==1) {%>
+                                                        <td>
+                                                            <button id="btnSave" class="btn btn-outline-danger w-50" onclick="confirmar(<%= admins[i].id_admin %>)"
+                                                                title="Eliminar"><i class="fa fa-trash"></i></button>
+                                                        </td>
+                                                        <% } else {%>
+                                                            <td>
+                                                                <button id="btnSave" class="btn btn-outline-danger w-50"
+                                                                    title="Eliminar" disabled><i
+                                                                        class="fa fa-trash"></i></button>
+                                                            </td>
+                                                            <% } %>
+                                                                <% } else {%>
+                                                                    <td>
+                                                                        <button id="btnSave"
+                                                                            class="btn btn-outline-danger w-50"
+                                                                            title="Eliminar" disabled><i
+                                                                                class="fa fa-trash"></i></button>
+                                                                    </td>
+                                                            <% } %>
+                                            </tr>
+                                            <% } %>
+                                                <% } %>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
     <!-- Header End -->
 
     <!-- Footer Start -->
@@ -197,7 +256,6 @@
     <script src="/lib/tempusdominus/js/moment.min.js"></script>
     <script src="/lib/tempusdominus/js/moment-timezone.min.js"></script>
     <script src="/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
-    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
 
     <!-- Contact Javascript File -->
     <script src="mail/jqBootstrapValidation.min.js"></script>
@@ -205,30 +263,22 @@
 
     <!-- Javascript Principal -->
     <script src="/js/main.js"></script>
-    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.all.min.js"></script>
     <script>
-        var toolbarOptions = [
-            [{ 'header': [3, 4, false] }],                  // tamaño de headers   
-            ['bold', 'italic', 'underline'],                // formas de letras
-            [{'align': [] }],                               // alineado
-            [{ 'list': 'ordered' }, { 'list': 'bullet' }],  // listas
-            [{ 'script': 'sub' }, { 'script': 'super' }],   // superindice/subindice
-            [{ 'indent': '-1' }, { 'indent': '+1' }],       // sangria
-            //[{ 'color': [] }, { 'background': [] }],      // color de letra y fondo         
-            ['link'],                                       // crear links
-            ['clean']                                       // limpiar formato
-        ];
-        var quill = new Quill('#editor', {
-            modules: {
-                toolbar: toolbarOptions
-            },
-            placeholder: 'Escriba aquí...',
-            theme: 'snow'
-        });
-
-        quill.on('text-change', function(delta, oldDelta, source) {
-        document.getElementById("contenido").value = quill.root.innerHTML;
-        });
+        function confirmar(id) {
+            Swal.fire({
+                title: '¿Desea eliminar este administrador?',
+                text: "Se eliminará permanentemente",
+                icon: 'warning',
+                backdrop: false,
+                showCancelButton: true,
+                confirmButtonText: 'Aceptar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location = '/admins/delete/' + id;
+                }
+            });
+        }
     </script>
 </body>
 

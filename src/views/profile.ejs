@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Equipo de trabajo</title>
+    <title>Mi perfil</title>
 
     <!-- Favicon -->
     <link href="img/favicon.ico" rel="icon">
@@ -19,6 +19,7 @@
     <!-- Libraries Stylesheet -->
     <link rel="stylesheet" href="/lib/owlcarousel/assets/owl.carousel.min.css">
     <link rel="stylesheet" href="/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css">
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 
     <!-- Customized Bootstrap Stylesheet -->
     <link rel="stylesheet" href="/css/style.css">
@@ -54,7 +55,6 @@
     </div>
     <!-- Topbar End -->
 
-
     <!-- Navbar Start -->
     <div class="container-fluid position-relative nav-bar p-0">
         <div class="container-lg position-relative p-0 px-lg-3" style="z-index: 9;">
@@ -71,7 +71,7 @@
                     <div class="navbar-nav ml-auto py-0">
                         <a href="/inicio" class="nav-item nav-link">Inicio</a>
                         <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle active" data-toggle="dropdown">Información</a>
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Información</a>
                             <div class="dropdown-menu border-0 rounded-0 m-0">
                                 <a href="/estaciones" class="dropdown-item">Estaciones</a>
                                 <a href="/sensores" class="dropdown-item">Sensores</a>
@@ -85,26 +85,29 @@
                         <a href="/contacto" class="nav-item nav-link">Contacto</a>
 
                         <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><i
+                            <a href="#" class="nav-link dropdown-toggle active" data-toggle="dropdown"><i
                                     class="fa fa-user"></i></a>
                             <div class="dropdown-menu border-0 rounded-0 m-0">
                                 <div class="d-flex">
                                     <div class="flex-shrink-0 me-3">
                                         <div class="px-1">
-                                            <img src="/img/avatar.png" alt
-                                                class="w-px-40 h-auto rounded-circle" />
+                                            <img src="/img/avatar.png" alt class="w-px-40 h-auto rounded-circle" />
                                         </div>
                                     </div>
                                     <div class="px-lg-2 ml-n1">
-                                        <span class="fw-semibold d-block text-info text-truncate"><%= admin.nombre %></span>
+                                        <span class="fw-semibold d-block text-info text-truncate">
+                                            <%= admin.nombre %>
+                                        </span>
                                         <small class="text-muted">Admin</small>
                                     </div>
                                 </div>
                                 <div class="dropdown-divider"></div>
                                 <a href="/perfil" class="dropdown-item"><i class="fa fa-user mr-2"></i>Mi perfil</a>
-                                <a href="/admins" class="dropdown-item"><i class="fa fa-users mr-2"></i>Administradores</a>
+                                <a href="/admins" class="dropdown-item"><i
+                                        class="fa fa-users mr-2"></i>Administradores</a>
                                 <div class="dropdown-divider"></div>
-                                <a href="/signoff" class="dropdown-item"><i class="fa fa-power-off mr-2"></i>Cerrar sesión</a>
+                                <a href="/signoff" class="dropdown-item"><i class="fa fa-power-off mr-2"></i>Cerrar
+                                    sesión</a>
                             </div>
                         </div>
                     </div>
@@ -117,44 +120,67 @@
     <!-- Header Start -->
     <div class="container-fluid page-header">
         <div class="container">
-            <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 600px">
+            <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 580px">
                 <div class="card">
                     <div class="card-body">
                         <div class="app-brand justify-content-center">
                             <a class="navbar-brand">
-                                <h3 class="m-0 text-info mb-2"><span class="text-dark">Nuevo</span> Miembro</h3>
+                                <h3 class="m-0 text-info mb-2"><span class="text-dark">Mi</span> perfil</h3>
                             </a>
                         </div>
-        
-                        <p class="mb-4">Llene los datos para añadir un nuevo miembro</p>
-        
-                        <form id="formAuthentication" class="mb-3" action="/equipo/save" method="POST" enctype="multipart/form-data">
-                            <div class="mb-3">
-                                <input type="text" class="form-control" name="nombre"
-                                    placeholder="Nombre del miembro" autofocus required/>
+                        <div class="d-flex align-items-start align-items-sm-center gap-4">
+                            <img src="/img/usuario.jpg" alt="user-avatar" class="d-block rounded" height="100"
+                                width="100" id="uploadedAvatar" />
+                            <div class="col-auto my-auto">
+                                <div class="h-100">
+                                    <h5 class="mb-1">
+                                        <%= admin.nombre %>
+                                    </h5>
+                                    <p class="mb-0 font-weight-normal text-sm text-info">Administrador</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <form id="formAuthentication" class="mb-3" action="/perfil/edit" method="POST">
+                            <p class="mb-2 pt-2">Marque la casilla para cambiar su contraseña</p>
+                            <div class="mb-3 mx-4">
+                                <input class="form-check-input" type="checkbox"
+                                    id="defaultCheck1" onchange="comprobar()" />
+                                <label class="form-check-label text-info" for="defaultCheck1"> Cambiar contraseña
+                                </label>
+                            </div>
+                            <div class="mb-3 form-password-toggle">
+                                <div class="input-group input-group-merge">
+                                    <input type="password" id="password1" class="form-control" name="contrasena"
+                                        placeholder="Contraseña actual" aria-describedby="password" required readonly/>
+                                </div>
+                            </div>
+                            <div class="mb-3 form-password-toggle">
+                                <div class="input-group input-group-merge">
+                                    <input type="password" id="password2" class="form-control" name="nueva_contrasena"
+                                        placeholder="Nueva contraseña" aria-describedby="password" required readonly/>
+                                </div>
+                            </div>
+                            <div class="mb-3 form-password-toggle">
+                                <div class="input-group input-group-merge">
+                                    <input type="password" id="password3" class="form-control" name="confirma_contrasena"
+                                        placeholder="Confirmar nueva contraseña" aria-describedby="password" required readonly/>
+                                </div>
                             </div>
                             <div class="mb-3">
-                                <input type="text" class="form-control" name="cargo"
-                                    placeholder="Cargo" required/>
-                            </div>
-                            <div class="mb-3">
-                                <input type="email" class="form-control" name="correo"
-                                    placeholder="Correo electrónico" required/>
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label text-muted mx-2">Fotografía</label>
-                                <input type="file" class="form-control" name="image" required/>
-                            </div>
-                            <div class="mb-3 text-center">
-                                <button class="btn btn-info d-grid w-auto mx-2" type="submit"><i class="fa fa-save mr-2"></i>Guardar</button>
-                                <a class="btn btn-danger d-grid w-auto mx-2" href="/equipo"><i class="fa fa-ban mr-2"></i>Cancelar</a>
+                                <button id="btnSave" class="btn btn-info d-grid w-100" type="submit" disabled><i
+                                    class="fa fa-pen mr-2"></i>Editar</button>
                             </div>
                         </form>
+                        <% if (error) {%>
+                            <p style="color:#ff5c5c"><%= error %></p>
+                        <% } %>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
     <!-- Header End -->
 
     <!-- Footer Start -->
@@ -193,6 +219,15 @@
 
     <!-- Javascript Principal -->
     <script src="/js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.all.min.js"></script>
+    <script>
+        function comprobar() {
+            document.getElementById('password1').readOnly = !document.getElementById("defaultCheck1").checked;
+            document.getElementById('password2').readOnly = !document.getElementById("defaultCheck1").checked;
+            document.getElementById('password3').readOnly = !document.getElementById("defaultCheck1").checked;
+            document.getElementById('btnSave').disabled = !document.getElementById("defaultCheck1").checked;
+        }
+    </script>
 </body>
 
 </html>

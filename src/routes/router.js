@@ -34,6 +34,7 @@ const loginController = require('../controllers/loginController.js');
 const mapController = require('../controllers/mapController.js');
 const contactController = require('../controllers/contactController.js');
 const newController = require('../controllers/newController.js');
+const adminController = require('../controllers/adminController.js');
 
 //Rutas para Inicio
 router.get('/inicio', homeController.showHome);
@@ -42,6 +43,13 @@ router.get('/inicio', homeController.showHome);
 router.get('/login', loginController.showLogin);
 router.post('/login', loginController.login);
 router.get('/signoff', loginController.signoff);
+
+//Rutas para Admins
+router.get('/perfil', adminController.showProfile);
+router.get('/admins', adminController.showAdmins);
+router.post('/admins/add', adminController.saveAdmin);
+router.post('/perfil/edit', adminController.editPassword);
+router.get('/admins/delete/:id_admin', adminController.deleteAdmin);
 
 //Rutas para Estaciones
 router.get('/estaciones', stationController.showStations);
